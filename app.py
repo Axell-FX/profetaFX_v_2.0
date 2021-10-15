@@ -189,7 +189,7 @@ def show_forecast(m, forecast, data, p, df_train, currency, c2, selected_stock):
 
 def main():
     st.set_page_config(
-        page_title="FINAnce preDICT",
+        page_title="Profeta Forex by Axell-FX",
         page_icon="•",
         layout="centered",
         initial_sidebar_state="expanded",
