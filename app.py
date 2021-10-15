@@ -197,7 +197,7 @@ def main():
 
     st.sidebar.image('profetafx.png')
 
-    menu = ["Stocks", "Forex", "Crypto"]
+    menu = ["Forex", "Crypto", "Stocks"]
     choice = st.sidebar.selectbox("Select your market choice", menu)
 
     if choice == menu[0]:
@@ -267,7 +267,7 @@ def main():
 
         selected_stock = st.text_input(
             "Type in a conversion string",
-            value="BTC-INR",
+            value="BTC-USD",
             help="'[CURRENCY 1]-[CURRENCY 2]' to get [CURRENCY 1] to [CURRENCY 2] conversion rate.",
         )
         st.write(
