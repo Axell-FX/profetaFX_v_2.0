@@ -195,7 +195,7 @@ def main():
         initial_sidebar_state="expanded",
     )
 
-    st.sidebar.image('finadict.png')
+    st.sidebar.image('profetafx.png')
 
     menu = ["Stocks", "Forex", "Crypto"]
     choice = st.sidebar.selectbox("Select your market choice", menu)
@@ -241,16 +241,16 @@ def main():
         st.title("Forex Prediction")
 
         col1, col2 = st.columns(2)
-        x = col1.text_input("From", value="USD")
-        y = col2.text_input("To", value="INR")
+        x = col1.text_input("From", value="EURO")
+        y = col2.text_input("To", value="USD")
         st.write(
             "*<p style='text-decoration:none; font-size:13px'>Find the currency symbol <strong>[here](https://finance.yahoo.com/currencies)</strong>.</p>*",
             unsafe_allow_html=True,
         )
         if not x:
-            x = "USD"
+            x = "EURO"
         if not y:
-            y = "INR"
+            y = "USD"
 
         selected_stock = x + y + "=X"
         comp = yf.Ticker(selected_stock)
