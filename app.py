@@ -197,7 +197,7 @@ def main():
 
     st.sidebar.image('profetafx.png')
 
-    menu = ["Forex", "Crypto", "Stocks"]
+    menu = ["Stocks", "Forex", "Crypto"]
     choice = st.sidebar.selectbox("Select your market choice", menu)
 
     if choice == menu[0]:
@@ -241,16 +241,16 @@ def main():
         st.title("Forex Prediction")
 
         col1, col2 = st.columns(2)
-        x = col1.text_input("From", value="EURO")
-        y = col2.text_input("To", value="USD")
+        x = col1.text_input("From", value="USD")
+        y = col2.text_input("To", value="INR")
         st.write(
             "*<p style='text-decoration:none; font-size:13px'>Find the currency symbol <strong>[here](https://finance.yahoo.com/currencies)</strong>.</p>*",
             unsafe_allow_html=True,
         )
         if not x:
-            x = "EURO"
+            x = "USD"
         if not y:
-            y = "USD"
+            y = "INR"
 
         selected_stock = x + y + "=X"
         comp = yf.Ticker(selected_stock)
@@ -267,7 +267,7 @@ def main():
 
         selected_stock = st.text_input(
             "Type in a conversion string",
-            value="BTC-USD",
+            value="BTC-INR",
             help="'[CURRENCY 1]-[CURRENCY 2]' to get [CURRENCY 1] to [CURRENCY 2] conversion rate.",
         )
         st.write(
