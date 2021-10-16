@@ -1,4 +1,4 @@
-python -m pip install –upgrade pip
+pip==21.3
 pystan==2.19.1.1
 streamlit
 fbprophet
