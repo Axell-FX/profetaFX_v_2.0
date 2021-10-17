@@ -1,20 +1,20 @@
-FROM subhayu99/fbprophet
+FROM heroku/heroku:18-build
 
-LABEL maintainer="Subhayu Kumar Bala ( balasubhayu99@gmail.com )"
+ENV WORKSPACE_DIR="/app/builds" \
+    S3_BUCKET="heroku-buildpack-python" \
+    S3_PREFIX="heroku-18/" \
+    STACK="heroku-18"
 
-RUN apt-get update
-RUN git clone https://github.com/subhayu99/finadict.git
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+        libsqlite3-dev \
+        python3-pip \
+        python3-setuptools \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /root/notebooks/finadict
+WORKDIR /app
 
-RUN pip3 install -r requirements.txt
+COPY requirements.txt /app/
+RUN pip3 install --disable-pip-version-check --no-cache-dir -r /app/requirements.txt
 
-ENV STREAMLIT_SERVER_PORT 80
-
-EXPOSE 80
-
-STOPSIGNAL SIGTERM
-
-ENTRYPOINT ["streamlit", "run"]
-
-CMD ["app.py"]
+COPY . /app
