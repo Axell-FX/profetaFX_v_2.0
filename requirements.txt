@@ -1,5 +1,5 @@
 pip==21.3
-pystan
+pystan==3.3.0
 streamlit
 fbprophet
 yfinance
