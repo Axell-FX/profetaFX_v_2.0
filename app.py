@@ -119,14 +119,13 @@ def show_forecast(m, forecast, data, p, df_train, currency, c2, selected_stock):
         inplace=True,
     )
     only_forecast["Actual Price"] = df_train["y"]
-    only_forecast["Close"] = df_train["y"]
     only_forecast["Date"] = only_forecast["ds"].astype(str)
     only_forecast["Predicted Price"] = only_forecast["yhat"]
     only_forecast["Predicted Price (Lower)"] = only_forecast["yhat_lower"]
     only_forecast["Predicted Price (Upper)"] = only_forecast["yhat_upper"]
     only_forecast['S_3'] = df_train["y"].rolling(window=3).mean()
     only_forecast['S_9'] = df_train["y"].rolling(window=9).mean()
-    only_forecast['next_day_price'] = only_forecast["yhat"].shift(-1)
+    only_forecast['Predicted Price'] = only_forecast["yhat"].shift(-1)
     linear = LinearRegression().fit(original, prediction)
     rmpse = (
         np.sqrt(np.nanmean(np.square(((original - prediction) / original)))) * 100
