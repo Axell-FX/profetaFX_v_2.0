@@ -85,13 +85,13 @@ def plot_raw_data(data, date_index):
         st.plotly_chart(csfig, use_container_width=True)
 
 
-#def build_model(comp_country_code):
+def build_model(comp_country_code):
     # Define forecasting model.
-    #m = Prophet(
-        #interval_width=0.95,
-        #daily_seasonality=True,
+    m = Prophet(
+        interval_width=0.95,
+        daily_seasonality=True,
         # weekly_seasonality=True,
-        #changepoint_prior_scale=1,
+        changepoint_prior_scale=1,
     #)
     if comp_country_code:
         m.add_country_holidays(country_name=comp_country_code)
